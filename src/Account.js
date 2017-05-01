@@ -8,13 +8,11 @@ export default class Account extends Component {
       balance: 0
     }
 
-    this._handleDepositClick = this.__explode__handleDepositClick.bind(this)
-    this._handleWithdrawalClick = this.__explode__andleWithdrawalClick.bind(this)
   }
 
-  _handleDepositClick(e) {
+  handleDepositClick(e) {
     e.preventDefault()
-    let amount = +this.refs.amount.value
+    let amount = parseInt(this.refs.amount.value);
     let newBalance = this.state.balance + amount;
     this.setState({
       balance: newBalance
@@ -22,9 +20,9 @@ export default class Account extends Component {
     this.refs.amount.value = '';
   }
 
-  _handleWithdrawalClick(e) {
+  handleWithdrawalClick(e) {
     e.preventDefault()
-    let amount = +this.refs.amount.value;
+    let amount = parseInt(this.refs.amount.value);
     let newBalance = this.state.balance - amount;
     if (newBalance < 0) {
       newBalance = 0
@@ -46,8 +44,8 @@ export default class Account extends Component {
         <h2>{this.props.name}</h2>
         <div className={balanceClass}>${this.state.balance}</div>
         <input type="text" placeholder="enter an amount" ref="amount" />
-        <input type="button" value="Deposit" onClick={this._handleDepositClick} />
-        <input type="button" value="Withdraw" onClick={this._handleWithdrawalClick} />
+        <input type="button" value="Deposit" onClick={(e)=>this.handleDepositClick(e)} />
+        <input type="button" value="Withdraw" onClick={(e)=>this.handleWithdrawalClick(e)} />
       </div>
     )
   }
