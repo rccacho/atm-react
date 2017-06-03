@@ -29,14 +29,18 @@ export default class Account extends Component {
     this.refs.amount.value = '';
   }
   render() {
+    let balanceClass = 'balance';
+    if (this.state.balance === 0) {
+      balanceClass += ' zero';
     return (
       <div className="account">
         <h2>{this.props.name}</h2>
-        <div className="balance">$0</div>
+        <div className={balanceClass}>${this.state.balance}</div>
         <input type="text" placeholder="enter an amount" ref="amount" />
         <input type="button" value="Deposit" onClick={(e) => this.handleDepositClick(e)} />
         <input type="button" value="Withdraw" onClick={(e) => this.handleWithdrawClick(e)} />
       </div>
     )
+    }
   }
 }
