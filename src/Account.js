@@ -32,6 +32,7 @@ export default class Account extends Component {
     let balanceClass = 'balance';
     if (this.state.balance === 0) {
       balanceClass += ' zero';
+    }
     return (
       <div className="account">
         <h2>{this.props.name}</h2>
@@ -41,6 +42,5 @@ export default class Account extends Component {
         <input type="button" value="Withdraw" onClick={(e) => this.handleWithdrawClick(e)} />
       </div>
     )
-    }
   }
 }
