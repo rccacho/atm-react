@@ -16,6 +16,18 @@ export default class Account extends Component {
     })
     this.refs.amount.value = '';
   }
+  handleWithdrawClick(e) {
+    e.preventDefault()
+    let amount = parseInt(this.refs.amount.value, 10)
+    let newBalance = this.state.balance - amount;
+    if (newBalance < 0) {
+      newBalance = 0;
+    }
+    this.setState({
+      balance: newBalance
+    })
+    this.refs.amount.value = '';
+  }
   render() {
     return (
       <div className="account">
