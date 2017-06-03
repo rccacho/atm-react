@@ -7,6 +7,15 @@ export default class Account extends Component {
             balance: 0
           }
         }
+  handleDepositClick(e) {
+    e.preventDefault()
+    let amount = parseInt(this.refs.amount.value, 10)
+    let newBalance = this.state.balance + amount;
+    this.setState({
+      balance: newBalance
+    })
+    this.refs.amount.value = '';
+  }
   render() {
     return (
       <div className="account">
